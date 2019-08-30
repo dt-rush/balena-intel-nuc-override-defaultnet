@@ -1,0 +1,17 @@
+version: '2'
+
+networks:
+  default:
+    ipam:
+      config:
+        - subnet: 192.20.0.0/24
+          gateway: 192.20.0.1
+
+services:
+  main:
+    restart: always
+    image: balenalib/intel-nuc
+    command: bash -c "while true; do sleep 1000000; done"
+    networks:
+      default:
+        ipv4_address: 192.20.0.2
